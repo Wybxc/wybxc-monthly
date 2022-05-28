@@ -1,0 +1,9 @@
+.paragraph {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.sentence {
+    margin-top: 0;
+    margin-bottom: 0;
+}
