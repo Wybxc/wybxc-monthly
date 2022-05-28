@@ -45,7 +45,7 @@ const config = {
           path: 'posts',
           sidebarPath: require.resolve('./sidebars.js'),
           sidebarCollapsed: false,
-          editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit/posts',
+          editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit',
           remarkPlugins: [math, require('mdx-mermaid')],
           rehypePlugins: [katexPlugin]
         },
@@ -53,7 +53,7 @@ const config = {
           path: 'featured',
           blogSidebarTitle: '忘忧北萱草精选',
           showReadingTime: true,
-          editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit/featured',
+          editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit',
           remarkPlugins: [math, require('mdx-mermaid')],
           rehypePlugins: [katexPlugin]
         },
@@ -86,7 +86,8 @@ const config = {
             label: 'GitHub',
             position: 'right'
           }
-        ]
+        ],
+        hideOnScroll: true,
       },
       footer: {
         style: 'dark',
