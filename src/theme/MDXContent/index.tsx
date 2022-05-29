@@ -15,7 +15,7 @@ const MDXContentWrapper: React.FC = (props) => {
         repoId="R_kgDOHaWsQg"
         category="Giscus 评论"
         categoryId="DIC_kwDOHaWsQs4CPWJu"
-        mapping="pathname"
+        mapping="title"
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
