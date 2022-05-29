@@ -1,6 +1,7 @@
 import Giscus from '@giscus/react'
 import MDXContent from '@theme-original/MDXContent'
 import React from 'react'
+import Tips from '@site/src/components/Tips'
 import { useColorMode } from '@docusaurus/theme-common'
 
 const MDXContentWrapper: React.FC = (props) => {
@@ -20,8 +21,9 @@ const MDXContentWrapper: React.FC = (props) => {
         inputPosition="top"
         theme={colorMode == 'dark' ? 'dark_protanopia' : 'light_protanopia'}
         lang="zh-CN"
-        loading="lazy"
+        loading="eager"
       />
+      <Tips />
     </>
   )
 }
