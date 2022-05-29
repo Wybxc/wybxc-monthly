@@ -5,6 +5,7 @@ specifiers:
   '@docusaurus/module-type-aliases': 2.0.0-beta.21
   '@docusaurus/preset-classic': 2.0.0-beta.21
   '@docusaurus/theme-classic': 2.0.0-beta.21
+  '@docusaurus/theme-common': 2.0.0-beta.21
   '@giscus/react': ^2.0.5
   '@mdx-js/react': ^1.6.22
   '@tsconfig/docusaurus': ^1.0.5
@@ -25,6 +26,7 @@ dependencies:
   '@docusaurus/core': 2.0.0-beta.21_k26rfrdk2uh2ao3d3jcmn6wejm
   '@docusaurus/preset-classic': 2.0.0-beta.21_iy2lpm3at73gqc4mzl3hdgxto4
   '@docusaurus/theme-classic': 2.0.0-beta.21_k26rfrdk2uh2ao3d3jcmn6wejm
+  '@docusaurus/theme-common': 2.0.0-beta.21_k26rfrdk2uh2ao3d3jcmn6wejm
   '@giscus/react': 2.0.5_sfoxds7t5ydpegc3knd667wn6m
   '@mdx-js/react': 1.6.22_react@17.0.2
   clsx: 1.1.1

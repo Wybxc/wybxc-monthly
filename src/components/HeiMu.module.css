@@ -6,5 +6,6 @@
 
 .HeiMu:hover {
   background-color: inherit;
+  transition: color 0.13s linear;
   color: inherit;
 }

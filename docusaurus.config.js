@@ -13,7 +13,7 @@ const katexPlugin = [
     strict: false,
     macros: {
       '\\and': '\\wedge',
-      '\\or': '\\vee',
+      '\\or': '\\vee'
     }
   })
 ]
@@ -21,7 +21,7 @@ const katexPlugin = [
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '忘忧北萱草月刊',
-  tagline: '了解一下最新最热的忘忧北萱草！',
+  tagline: '了解一下最新最热的忘忧北萱草月刊！',
   url: 'https://wybxc-monthly.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -43,6 +43,7 @@ const config = {
       ({
         docs: {
           path: 'posts',
+          routeBasePath: '/posts',
           sidebarPath: require.resolve('./sidebars.js'),
           sidebarCollapsed: false,
           editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit',
@@ -51,6 +52,7 @@ const config = {
         },
         blog: {
           path: 'featured',
+          routeBasePath: '/featured',
           blogSidebarTitle: '忘忧北萱草精选',
           showReadingTime: true,
           editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit',
@@ -80,14 +82,15 @@ const config = {
             position: 'left',
             label: '月刊'
           },
-          { to: '/blog', label: '精选', position: 'left' },
+          { to: '/featured', label: '精选', position: 'left' },
           {
             href: 'https://github.com/Wybxc/wybxc-monthly',
-            label: 'GitHub',
-            position: 'right'
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository'
           }
         ],
-        hideOnScroll: true,
+        hideOnScroll: true
       },
       footer: {
         style: 'dark',
@@ -106,11 +109,33 @@ const config = {
             ]
           },
           {
+            title: '社交媒体',
+            items: [
+              {
+                label: '知乎',
+                href: 'https://www.zhihu.com/people/Wybxc'
+              },
+              {
+                label: 'Bilibili',
+                href: 'https://space.bilibili.com/85438718'
+              }
+            ]
+          },
+          {
             title: '更多',
             items: [
               {
                 label: 'GitHub',
                 href: 'https://github.com/Wybxc/wybxc-monthly'
+              }
+            ]
+          },
+          {
+            title: '友情链接',
+            items: [
+              {
+                label: 'YiriMirai',
+                href: 'https://yiri-mirai.wybxc.cc'
               }
             ]
           }
@@ -120,6 +145,9 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme
+      },
+      colorMode: {
+        respectPrefersColorScheme: true
       }
     }),
   stylesheets: [
