@@ -7,7 +7,7 @@
 </div>
 
 [![Style](https://img.shields.io/badge/Style-%E5%BF%98%E5%BF%A7%E5%8C%97%E8%90%B1%E8%8D%89-8e48ff)](https://github.com/Wybxc)
-[![Love](https://img.shields.io/badge/Love-100%25!-ff69b4)](https://wybxc-monthly.vercel.app)
+[![Love](https://img.shields.io/badge/Love-100%25!-ff69b4)](https://monthly.wybxc.cc)
 [![Licence](https://img.shields.io/badge/Licence-CC%20BY--NC--ND%204.0-orange)](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-Hans)
 
 因为想办一个月刊，所以就有了这个项目。
