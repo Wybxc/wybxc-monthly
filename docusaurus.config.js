@@ -43,7 +43,7 @@ const config = {
       ({
         docs: {
           path: 'posts',
-          routeBasePath: '/posts',
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           sidebarCollapsed: false,
           editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit',
@@ -78,7 +78,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'index',
             position: 'left',
             label: '月刊'
           },
@@ -100,11 +100,11 @@ const config = {
             items: [
               {
                 label: '月刊',
-                to: '/docs/intro'
+                to: '/'
               },
               {
                 label: '精选',
-                to: '/blog'
+                to: '/featured'
               }
             ]
           },
@@ -157,6 +157,18 @@ const config = {
       integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous'
     }
+  ],
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en', 'zh'],
+        docsRouteBasePath: '/',
+        indexBlog: false,
+        docsDir: 'posts',
+      }
+    ]
   ]
 }
 
