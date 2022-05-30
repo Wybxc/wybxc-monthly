@@ -2,7 +2,7 @@ import React from 'react'
 
 const tips = [
   '你瞎了？试试深色模式',
-  '忘忧北萱草月刊是用 Docurausus 搭建的哦',
+  '忘忧北萱草月刊是用 Docusaurus 搭建的哦',
   '欢迎来到月刊，有什么问题可以在这里提问',
   '想知道网站的源码？右上角点击 Github 图标',
   '有什么想说的？可以在这里留言',
