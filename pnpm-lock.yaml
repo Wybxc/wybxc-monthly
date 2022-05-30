@@ -18,6 +18,7 @@ specifiers:
   prism-react-renderer: ^1.3.3
   react: ^17.0.2
   react-dom: ^17.0.2
+  react-shimmer: ^3.2.0
   rehype-katex: '5'
   remark-math: '3'
   typescript: ^4.6.4
@@ -38,6 +39,7 @@ dependencies:
   prism-react-renderer: 1.3.3_react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-shimmer: 3.2.0_sfoxds7t5ydpegc3knd667wn6m
   rehype-katex: 5.0.0
   remark-math: 3.0.1
   unist-util-visit: 2.0.0
@@ -7656,6 +7658,19 @@ packages:
       react-is: 16.13.1
       tiny-invariant: 1.2.0
       tiny-warning: 1.0.3
+    dev: false
+
+  /react-shimmer/3.2.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-sLUYOulTt4Pf8/ezwRaDdVblEyrD0zkJEH1OsFvgNZbc0n5FTQa8anBrtAoCFCQthOOWgFmD89RPVeILyM9WjQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      clsx: 1.1.1
+      prop-types: 15.8.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-textarea-autosize/8.3.4_7u6mpky5dbb5b3hgdescs5ficq:
