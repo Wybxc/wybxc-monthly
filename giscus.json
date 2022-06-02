@@ -1,7 +1,9 @@
 {
     "origins": [
         "https://wybxc-monthly.vercel.app",
-        "https://monthly.wybxc.cc"
+        "https://wybxc-monthly-latest.vercel.app",
+        "https://monthly.wybxc.cc",
+        "https://monthly-latest.wybxc.cc"
     ],
     "defaultCommentOrder": "newest"
 }
