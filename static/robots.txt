@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://monthly.wybxc.cc/sitemap.xml
