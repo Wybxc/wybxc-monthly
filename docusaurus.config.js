@@ -22,7 +22,7 @@ const katexPlugin = [
 const config = {
   title: '忘忧北萱草月刊',
   tagline: '了解一下最新最热的忘忧北萱草月刊！',
-  url: 'https://wybxc-monthly.vercel.app',
+  url: 'https://monthly.wybxc.cc',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
