@@ -5,5 +5,9 @@
         "https://monthly.wybxc.cc",
         "https://monthly-latest.wybxc.cc"
     ],
+    "originsRegex": [
+        "http://localhost:[0-9]+",
+        "https?://[a-zA-Z0-9\\.]+\\.(ipfs|ipns)(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+"
+    ],
     "defaultCommentOrder": "newest"
 }
