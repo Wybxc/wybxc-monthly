@@ -4,11 +4,19 @@
 
 来了解一下最新最热的忘忧北萱草月刊吧！
 
-</div>
-
 [![Style](https://img.shields.io/badge/Style-%E5%BF%98%E5%BF%A7%E5%8C%97%E8%90%B1%E8%8D%89-8e48ff)](https://github.com/Wybxc)
 [![Love](https://img.shields.io/badge/Love-100%25!-ff69b4)](https://monthly.wybxc.cc)
 [![Licence](https://img.shields.io/badge/Licence-CC%20BY--NC--ND%204.0-orange)](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-Hans)
+
+</div>
+
+地址：https://monthly.wybxc.cc
+
+预印预览版：https://monthly-latest.wybxc.cc
+
+现在也可从 IPFS 访问：http://wybxc.cc.ipns.dweb.link
+
+## 介绍
 
 因为想办一个月刊，所以就有了这个项目。
 
