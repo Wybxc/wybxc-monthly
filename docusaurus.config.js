@@ -45,7 +45,7 @@ const config = {
           path: 'posts',
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          sidebarCollapsed: false,
+          sidebarCollapsed: true,
           editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit',
           remarkPlugins: [math, require('mdx-mermaid')],
           rehypePlugins: [katexPlugin]
@@ -73,6 +73,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       navbar: {
         title: '忘忧北萱草月刊',
         logo: {
