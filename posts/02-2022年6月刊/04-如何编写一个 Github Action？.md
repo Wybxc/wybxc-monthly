@@ -132,15 +132,15 @@ inputs:
 对于 Javascript 环境，GitHub 提供了一些库来从环境变量中读取输入，可以在[这里](https://github.com/actions/toolkit)找到。比如，读取 token 的代码就可以这么写：
 
 ```js
-import * as core from '@actions/core';
-const token = core.getInput('token');
+import * as core from '@actions/core'
+const token = core.getInput('token')
 ```
 
 因为这些库的本质都是环境变量和输出操作，所以并不局限于 Node.js，在 deno 中也是可用的。
 
 ```js
-import * as core from 'https://esm.sh/@actions/core@1.8.2';
-const token = core.getInput('token');
+import * as core from 'https://esm.sh/@actions/core@1.8.2'
+const token = core.getInput('token')
 ```
 
 ---
@@ -218,27 +218,27 @@ ENTRYPOINT ["deno", "run" , \
 从 Dockerfile 中可以知道，程序的入口点在 `src/action.ts`。
 
 ```typescript
-import * as core from '@actions/core';
-import * as github from '@actions/github';
+import * as core from '@actions/core'
+import * as github from '@actions/github'
 
 if (github.context.eventName === 'push' && github.context.payload?.head_commit) {
   if (/\[Skip GitHub Action\]/.test(github.context.payload.head_commit.message)) {
-    console.log('Skipped because [Skip GitHub Action] is in commit message');
-    Deno.exit(0);
+    console.log('Skipped because [Skip GitHub Action] is in commit message')
+    Deno.exit(0)
   }
 }
 
-const verbose = parseInt(core.getInput('verbose')) || 0;
+const verbose = parseInt(core.getInput('verbose')) || 0
 ```
 
 这两个 import 语句没有使用 url，而是像 Node.js 一样直接用名称引入，是因为我定义了 `import_map.json`，它可以将名称映射到 url。
 
 ```json
 {
-    "imports": {
-        "@actions/core": "https://esm.sh/@actions/core@1.8.2",
-        "@actions/github": "https://esm.sh/@actions/github@5.0.3"
-    }
+  "imports": {
+    "@actions/core": "https://esm.sh/@actions/core@1.8.2",
+    "@actions/github": "https://esm.sh/@actions/github@5.0.3"
+  }
 }
 ```
 
@@ -253,31 +253,30 @@ const verbose = parseInt(core.getInput('verbose')) || 0;
 `octokit` 是对 GitHub 的 API 进行封装的库。
 
 ```typescript
-import { Octokit } from 'https://esm.sh/octokit@1.7.2';
+import { Octokit } from 'https://esm.sh/octokit@1.7.2'
 
-const token = core.getInput('token');
-if (!token)
-    throw new Error('No token was provided for GitHub repository.');
-const octokit = new Octokit({ auth: token });
+const token = core.getInput('token')
+if (!token) throw new Error('No token was provided for GitHub repository.')
+const octokit = new Octokit({ auth: token })
 ```
 
 或者通过 `@actions/github` 提供的方法，在 Actions 环境中获取 Octokit 实例：
 
 ```typescript
-import * as github from '@actions/github';
-const octokit = github.getOctokit(token);
+import * as github from '@actions/github'
+const octokit = github.getOctokit(token)
 ```
 
 然后使用 API 推送文件内容。
 
 ```typescript
-import { encode } from 'https://deno.land/std@0.143.0/encoding/base64.ts';
+import { encode } from 'https://deno.land/std@0.143.0/encoding/base64.ts'
 
 async function commit({ owner, repo, branch, path, content }) {
-  const sha = await queryObjectHash(octokit, { owner, repo, branch, path });
+  const sha = await queryObjectHash(octokit, { owner, repo, branch, path })
   if (sha === (await gitHashObject(content))) {
-    console.log('content is same, skip commit');
-    return;
+    console.log('content is same, skip commit')
+    return
   }
   await octokit.rest.repos.createOrUpdateFileContents({
     owner,
@@ -286,15 +285,15 @@ async function commit({ owner, repo, branch, path, content }) {
     message: `Update ${path} [Skip GitHub Action]`,
     ...(sha ? { sha } : {}),
     content: encode(content),
-    branch,
-  });
+    branch
+  })
 }
 ```
 
 其中通过 sha 来校验文件相等性。`queryObjectHash` 和 `gitHashObject` 是两个辅助函数，分别用于获取远程和本地文件的 SHA Hash。git 计算 SHA-1 的方式并非直接计算，而是先在数据前面一次添加 `'blob '`，文件长度（字符串）和 `'\0'`，所以我封装了一个自己的函数。
 
 ```typescript
-import { crypto } from 'https://deno.land/std@0.143.0/crypto/mod.ts';
+import { crypto } from 'https://deno.land/std@0.143.0/crypto/mod.ts'
 
 async function queryObjectHash(
   octokit: Octokit,
@@ -308,24 +307,23 @@ async function queryObjectHash(
         }
       }
         `
-  );
-  return query.repository?.object?.oid;
+  )
+  return query.repository?.object?.oid
 }
 
 async function gitHashObject(object: Uint8Array | string): Promise<string> {
-  const buffer =
-    typeof object === 'string' ? new TextEncoder().encode(object) : object;
+  const buffer = typeof object === 'string' ? new TextEncoder().encode(object) : object
   const blob = Uint8Array.from([
     ...new TextEncoder().encode('blob '),
     ...new TextEncoder().encode(buffer.length.toString()),
     0,
-    ...buffer,
-  ]);
+    ...buffer
+  ])
   return await crypto.subtle.digest('SHA-1', blob).then((hash) =>
     Array.from(new Uint8Array(hash))
       .map((b) => b.toString(16).padStart(2, '0'))
       .join('')
-  );
+  )
 }
 ```
 
@@ -338,43 +336,43 @@ GitHub Actions 的 output 是一系列只包含字符串的键值对，在 Actio
 在 `@actions/core` 中，提供了设置输出的方式：
 
 ```typescript
-import * as core from '@actions/core';
+import * as core from '@actions/core'
 
 const write = ({ path, content }) => {
-    core.setOutput(path, content);
-};
+  core.setOutput(path, content)
+}
 ```
 
 输出的实质是向标准输出写入一条形如 `::set-output name={name}::{value}` 的内容，所以如果不使用 `@actions/core` 的方法，也可以像这样写入输出：
 
 ```typescript
-console.log(`::set-output name=${path}::${JSON.stringify(value)}`);
+console.log(`::set-output name=${path}::${JSON.stringify(value)}`)
 ```
 
 写入输出后，就可以在 Actions 的后续步骤获取了，比如捕获输出并写入到文件：
 
 ```yaml
 steps:
-    - uses: actions/checkout@v3
+  - uses: actions/checkout@v3
 
-    - uses: Wybxc/github-stats@feature
-      id: stats
-      with:
-        token: ${{ secrets.GHTOKEN }}
+  - uses: Wybxc/github-stats@feature
+    id: stats
+    with:
+      token: ${{ secrets.GHTOKEN }}
 
-    - name: save output
-      run: |
-        cat <<- EOF > wakatime-stats.svg
-        ${{ steps.stats.outputs['wakatime-stats.svg'] }}
-        EOF
+  - name: save output
+    run: |
+      cat <<- EOF > wakatime-stats.svg
+      ${{ steps.stats.outputs['wakatime-stats.svg'] }}
+      EOF
 
-    - name: show output
-      run: cat wakatime-stats.svg
+  - name: show output
+    run: cat wakatime-stats.svg
 ```
 
 这里利用了 shell 的文件分界符功能（`cat <<- EOF`），将 output 里的内容写入文件。
 
-要获取 outputs，需要给运行我们的自定义操作的步骤设置 id，然后就可以在 `${{ steps.stats.outputs[...] }}` 里面找到输出。在 GitHub Actions 中，`${{ }}` 里面的内容可以是 js 表达式。上面的 `${{ steps.stats.outputs['wakatime-stats.svg'] }}` 表示的就是获取 `id`  为 `stats` 的步骤的输出中，`name` 为 `wakatime-stats.svg` 的值。
+要获取 outputs，需要给运行我们的自定义操作的步骤设置 id，然后就可以在 `${{ steps.stats.outputs[...] }}` 里面找到输出。在 GitHub Actions 中，`${{ }}` 里面的内容可以是 js 表达式。上面的 `${{ steps.stats.outputs['wakatime-stats.svg'] }}` 表示的就是获取 `id` 为 `stats` 的步骤的输出中，`name` 为 `wakatime-stats.svg` 的值。
 
 ### 自定义 Docker 启动
 
@@ -395,12 +393,12 @@ runs:
         echo $INPUT >> .env
       done
       env | grep -E '^(GITHUB|ACTIONS|CI|TZ)' >> .env
-      
+
       OUTPUT_DIR="/output"
       sudo mkdir -p $OUTPUT_DIR
-      
+
       docker build -t action_image .
-      
+
       docker run --init --rm --volume $GITHUB_EVENT_PATH:$GITHUB_EVENT_PATH --volume $OUTPUT_DIR:/output --env-file .env action_image
       rm .env
 ```
@@ -408,6 +406,3 @@ runs:
 将所有的环境变量收集到 `.env` 文件里。
 
 在启动 Docker 时，通过挂载数据卷将目录映射到容器内的目录，这样就可以在容器内读写外部目录。
-
-
-

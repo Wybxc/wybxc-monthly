@@ -167,7 +167,7 @@ struct ImageView {
 
 使用形式的目的一是方便直接渲染，二是将视图形式中的[计算值](#值)转为[使用值](#值)。
 
-```rust	
+```rust
 struct ImageRatio { x: f32, y: f32 }
 struct ImageRanderPosition { start: Point<f32>, stride: Point<f32>, end: Point<f32> }
 
@@ -231,10 +231,10 @@ pub use skia_safe::Color;
 ```Rust
 struct Size { width: Length, height: Length }
 struct EdgeSizes { top: Length, left: Length, right: Length, bottom: Length }
-enum DisplayStyle { 
-    Block { size: Size, position: PositionStyle }, 
-    Inline, 
-    InlineBlock { size: Size }, 
+enum DisplayStyle {
+    Block { size: Size, position: PositionStyle },
+    Inline,
+    InlineBlock { size: Size },
     None,
 }
 
@@ -269,9 +269,9 @@ trait BoxStyle {
 struct OffsetStyle { x: Length, y: Length }
 struct LocationStyle { top: Length, left: Length, right: Length, bottom: Length }
 enum FloatStyle { Left, Right, None }
-enum PositionStyle { 
-    Static, 
-    Float(FloatStyle), 
+enum PositionStyle {
+    Static,
+    Float(FloatStyle),
     Absolute(LocationStyle),
     Fixed(LocationStyle),
 }
@@ -317,7 +317,7 @@ trait BackgroundStyle {
 
 ```Rust
 struct Layout {
-    
+
 }
 ```
 
@@ -326,8 +326,6 @@ struct Layout {
 预期目标：支持 Canvas API 以及一些扩展 API，包括 `Canvas` `Gradient` `Pattern` `ImageSource` `Path`。
 
 ### Canvas
-
-
 
 ## NitreTypography
 

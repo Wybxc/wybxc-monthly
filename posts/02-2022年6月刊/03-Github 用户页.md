@@ -23,4 +23,3 @@ Star 本来就是收藏夹，所以有 List 很正常吧。
 ![stars](./Github-Stars.png)
 
 顺便可以加一点睿智吐槽什么的。
-

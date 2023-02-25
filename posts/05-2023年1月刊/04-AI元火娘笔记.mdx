@@ -4,7 +4,7 @@
 似乎 AI 绘画已经成了每一期都会有的固定内容了（逃）。
 :::
 
-import HM from "@site/src/components/HeiMu"
+import HM from '@site/src/components/HeiMu'
 
 年前就一直想着要训练一个元火娘的 AI 画图模型，前两天终于有时间实际动手了。
 
@@ -51,18 +51,18 @@ LoRA 是最近提出的一种微调网络结构的方法，可以用 hypernets �
 
 LoRA 对于数据集并不要求一定是正方形图片，所以之前为了裁剪正方形而向外扩展画幅的做法就不适用了。而且 LoRA 对于构图的细节比较敏感，而不像 Dreambooth 只提取主体，所以需要确保数据集中有一定比例的全身像。之前用 Live2D 截图做数据集，有很多半身像，结果训练出来要么没有腿，要么腿没有空间逻辑。
 
-LoRA 的数据集中可以指定正则化图像，就像 Dreambooth 的 class images 一样（秋叶的视频教程里没说这一点，点名批评x），虽然好像不指定也行，但是我没试过。
+LoRA 的数据集中可以指定正则化图像，就像 Dreambooth 的 class images 一样（秋叶的视频教程里没说这一点，点名批评 x），虽然好像不指定也行，但是我没试过。
 
 在 24G A5000 上，batch size 可以调到 8，以 1e-4 的学习率训练 40 epochs。（因为租用的实例已经被释放掉了，所以找不到训练日志了，不过我记得好像是这个参数）
 
-与 Dreambooth 相比，LoRA 不容易出现过拟合（参数就那么点，加上训练过程中看不到参考图所以也不知道有没有过拟合x），但是对生成时的 prompt 要求更高，如果 prompt 中没有足够的信息，根本无法体现人设。不过有趣的是，prompt 里面往往关键的一两条就能激活模型对人设的记忆，实际上并不需要很细致的描述。
+与 Dreambooth 相比，LoRA 不容易出现过拟合（参数就那么点，加上训练过程中看不到参考图所以也不知道有没有过拟合 x），但是对生成时的 prompt 要求更高，如果 prompt 中没有足够的信息，根本无法体现人设。不过有趣的是，prompt 里面往往关键的一两条就能激活模型对人设的记忆，实际上并不需要很细致的描述。
 
 LoRA 模型一共训练了四版，姐妹各两版，分别以 final-prune 和 Waifu Diffusion 1.4 为基底模型，适用于 Stable Diffusion 1.0 和 2.0 的网络结构。（主要是为了能结合 SD2.0 的 PVC 模型）
 
 在画<HM>涩</HM>图的时候，意外发现了姐妹同屏的 prompt。
 
 ```text
-masterpiece, best quality, <lora:yanhuo:0.55>, <lora:yanyuan:0.45>, 2girls, (([blue eyes], white hair, [short ahoge], side ponytail, pink color scheme)), ([long hair], red eyes, straight black hair, long hair, blunt bangs, ribbon, blue color scheme), sisters, yuri, saliva trail, volume light, depth of field, shadow, sash, looking at another, beautiful detailed sky, blush, dynamic angle, full body, garden, 
+masterpiece, best quality, <lora:yanhuo:0.55>, <lora:yanyuan:0.45>, 2girls, (([blue eyes], white hair, [short ahoge], side ponytail, pink color scheme)), ([long hair], red eyes, straight black hair, long hair, blunt bangs, ribbon, blue color scheme), sisters, yuri, saliva trail, volume light, depth of field, shadow, sash, looking at another, beautiful detailed sky, blush, dynamic angle, full body, garden,
 Negative prompt: lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry
 Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 8, Seed: 714442909, Size: 512x384, Model hash: f773383dbc, Denoising strength: 0.6, Clip skip: 2, ENSD: 31339, Hires upscale: 2, Hires steps: 20, Hires upscaler: Latent
 ```

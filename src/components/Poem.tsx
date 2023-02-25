@@ -3,7 +3,7 @@ import styles from './Poem.module.css'
 
 const Poem: React.FC = ({ children = [] }) => {
   if (!(children instanceof Array)) return <>{children}</>
-  const texts = children.map((child) => {    
+  const texts = children.map((child) => {
     if (typeof child === 'string') return child.split('\n')
     const childElement = child as React.ReactElement
     if (childElement.props.children) return childElement.props.children.split('\n')

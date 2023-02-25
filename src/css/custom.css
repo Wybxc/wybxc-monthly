@@ -48,6 +48,6 @@
     no-repeat;
 }
 
-img[alt$="-w50"] {
-    max-width: 49%;
+img[alt$='-w50'] {
+  max-width: 49%;
 }
