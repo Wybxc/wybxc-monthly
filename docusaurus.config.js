@@ -11,6 +11,7 @@ const katexPlugin = [
   /** @type {import('katex').KatexOptions} */
   ({
     strict: false,
+    displayMode: true,
     macros: {
       '\\and': '\\wedge',
       '\\or': '\\vee'
@@ -33,7 +34,7 @@ const config = {
 
   i18n: {
     defaultLocale: 'zh-CN',
-    locales: ['zh-CN', 'en-US']
+    locales: ['zh-CN']
   },
 
   presets: [
@@ -64,8 +65,8 @@ const config = {
         },
         gtag: {
           trackingID: 'G-Y6MP145EDG',
-          anonymizeIP: true,
-        },
+          anonymizeIP: true
+        }
       })
     ]
   ],
@@ -75,8 +76,8 @@ const config = {
     ({
       docs: {
         sidebar: {
-          autoCollapseCategories: true,
-        },
+          autoCollapseCategories: true
+        }
       },
       navbar: {
         title: '忘忧北萱草月刊',
@@ -154,7 +155,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust', 'powershell', 'cmake', 'docker'],
+        additionalLanguages: ['rust', 'powershell', 'cmake', 'docker']
       },
       colorMode: {
         respectPrefersColorScheme: true
@@ -162,7 +163,7 @@ const config = {
     }),
   stylesheets: [
     {
-      href: 'https://unpkg.com/katex@0.13.24/dist/katex.min.css',
+      href: 'https://unpkg.com/katex@0.15.6/dist/katex.min.css',
       type: 'text/css',
       integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous'
@@ -176,7 +177,7 @@ const config = {
         language: ['en', 'zh'],
         docsRouteBasePath: '/',
         indexBlog: false,
-        docsDir: 'posts',
+        docsDir: 'posts'
       }
     ]
   ]
