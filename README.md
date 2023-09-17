@@ -14,8 +14,6 @@
 
 预印预览版：https://monthly-latest.wybxc.cc
 
-现在也可从 IPFS 访问：http://wybxc.cc.ipns.dweb.link
-
 ## 介绍
 
 因为想办一个月刊，所以就有了这个项目。
