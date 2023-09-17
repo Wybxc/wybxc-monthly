@@ -11,8 +11,8 @@ const Intro: React.FC<{ latest: string }> = ({ latest }) => {
       <Link className={clsx('button button--primary button--md', styles.button)} to={latest}>
         最新一期
       </Link>
-      <Link className={clsx('button button--secondary button--md', styles.button)} to="/featured">
-        往期精选
+      <Link className={clsx('button button--secondary button--md', styles.button)} to="/random">
+        试试手气
       </Link>
     </div>
   )
