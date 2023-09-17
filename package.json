@@ -38,6 +38,7 @@
     "@docusaurus/module-type-aliases": "^2.4.1",
     "@docusaurus/types": "^2.4.1",
     "@tsconfig/docusaurus": "^1.0.7",
+    "@types/node": "^20.6.2",
     "@types/react": "^17.0.62",
     "prettier": "^2.8.8",
     "typescript": "^4.9.5"
