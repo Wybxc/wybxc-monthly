@@ -51,14 +51,10 @@ const config = {
           remarkPlugins: [math, require('mdx-mermaid')],
           rehypePlugins: [katexPlugin]
         },
-        blog: {
-          path: 'featured',
-          routeBasePath: '/featured',
-          blogSidebarTitle: '忘忧北萱草精选',
-          showReadingTime: true,
-          editUrl: 'https://github.com/Wybxc/wybxc-monthly/edit',
-          remarkPlugins: [math, require('mdx-mermaid')],
-          rehypePlugins: [katexPlugin]
+        pages: {
+          path: 'src/pages',
+          routeBasePath: '/',
+          include: ['**/*.{js,jsx,ts,tsx}']
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
@@ -92,7 +88,11 @@ const config = {
             position: 'left',
             label: '月刊'
           },
-          { to: '/featured', label: '精选', position: 'left' },
+          {
+            position: 'left',
+            label: '试试手气',
+            to: '/random'
+          },
           {
             href: 'https://github.com/Wybxc/wybxc-monthly',
             position: 'right',
@@ -113,8 +113,8 @@ const config = {
                 to: '/'
               },
               {
-                label: '精选',
-                to: '/featured'
+                label: '试试手气',
+                to: '/random'
               }
             ]
           },

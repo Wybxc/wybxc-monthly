@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
 
+import { useColorMode } from '@docusaurus/theme-common';
 import BrowserOnly from '@docusaurus/BrowserOnly'
 import Giscus from '@giscus/react'
 import MDXContent from '@theme-original/MDXContent'
 import Tips from '@site/src/components/Tips'
 
 const PageFooter = () => {
+  const { colorMode } = useColorMode();
+
   useEffect(() => {
     const timer = setTimeout(() => {
       const giscus = document.getElementById('giscus-comments') as any
@@ -27,7 +30,7 @@ const PageFooter = () => {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="preferred_color_scheme"
+        theme={colorMode === 'dark' ? 'transparent_dark' : 'light'}
         lang="zh-CN"
         loading="eager"
         key={document.title}
